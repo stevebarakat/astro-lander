@@ -23,7 +23,7 @@ const {
   image,
   url,
   type = "website",
-  siteName = "Shaggy Satellite",
+  siteName = "Astro Lander",
   locale = "en_US",
   imageWidth = 1200,
   imageHeight = 630,
@@ -35,9 +35,9 @@ const {
   articleTag,
 } = Astro.props;
 
-const fullTitle = title.includes("Shaggy Satellite")
+const fullTitle = title.includes("Astro Lander")
   ? title
-  : `${title} | Shaggy Satellite`;
+  : `${title} | Astro Lander`;
 const fullImageUrl = image?.startsWith("http")
   ? image
   : image

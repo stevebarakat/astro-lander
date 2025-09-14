@@ -30,9 +30,9 @@ const {
   additionalMeta = [],
 } = Astro.props;
 
-const fullTitle = title.includes("Shaggy Satellite")
+const fullTitle = title.includes("Astro Lander")
   ? title
-  : `${title} | Shaggy Satellite`;
+  : `${title} | Astro Lander`;
 const keywordsString = keywords.join(", ");
 ---
 
@@ -60,5 +60,7 @@ const keywordsString = keywords.join(", ");
         />
       ))
     }
+
+    <slot />
   </head>
 </html>

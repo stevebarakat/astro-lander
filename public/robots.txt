@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://astro-lander.com/sitemap-index.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Allow all search engines to access all content
+# The site is designed for SEO optimization and public visibility

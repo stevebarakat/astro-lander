@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   integrations: [react(), sitemap()],
-  site: "https://shaggy-satellite.com",
+  site: "https://astro-lander.com",
   compressHTML: true,
   build: {
     inlineStylesheets: "auto",
