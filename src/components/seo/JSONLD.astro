@@ -1,0 +1,35 @@
+---
+export type JSONLDProps = {
+  type:
+    | "WebSite"
+    | "Organization"
+    | "Product"
+    | "Article"
+    | "BreadcrumbList"
+    | "FAQPage"
+    | "SoftwareApplication";
+  data: Record<string, any>;
+};
+
+const { type, data } = Astro.props;
+
+const schemaTypes = {
+  WebSite: "https://schema.org/WebSite",
+  Organization: "https://schema.org/Organization",
+  Product: "https://schema.org/Product",
+  Article: "https://schema.org/Article",
+  BreadcrumbList: "https://schema.org/BreadcrumbList",
+  FAQPage: "https://schema.org/FAQPage",
+  SoftwareApplication: "https://schema.org/SoftwareApplication",
+};
+
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@type": schemaTypes[type as keyof typeof schemaTypes],
+  ...data,
+};
+
+const jsonLd = JSON.stringify(baseSchema);
+---
+
+<script type="application/ld+json" set:html={jsonLd} />

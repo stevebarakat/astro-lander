@@ -1,0 +1,425 @@
+---
+import {
+  TrackingScripts,
+  MetaTags,
+  JSONLD,
+  OpenGraph,
+  SocialMedia,
+} from "../components/seo";
+import type { JSONLDProps } from "../components/seo/JSONLD.astro";
+import type { TrackingScriptsProps } from "../components/seo/TrackingScripts.astro";
+import type { SocialMediaProps } from "../components/seo/SocialMedia.astro";
+
+export type LandingPageProps = {
+  title: string;
+  description: string;
+  keywords?: string[];
+  canonical?: string;
+  ogImage?: string;
+  jsonLd?: JSONLDProps;
+  tracking?: TrackingScriptsProps;
+  social?: SocialMediaProps;
+  layout?: "hero" | "split" | "grid" | "minimal" | "custom";
+  theme?: "light" | "dark" | "gradient";
+  showNavigation?: boolean;
+  showFooter?: boolean;
+  focusMode?: boolean;
+};
+
+const {
+  title,
+  description,
+  keywords = [],
+  canonical,
+  ogImage,
+  jsonLd,
+  tracking,
+  social,
+  layout = "hero",
+  theme = "light",
+  showNavigation = false,
+  showFooter = false,
+  focusMode = true,
+} = Astro.props;
+---
+
+<MetaTags
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical={canonical}
+>
+  <OpenGraph
+    title={title}
+    description={description}
+    image={ogImage}
+    url={canonical}
+  />
+
+  {jsonLd && <JSONLD type={jsonLd.type} data={jsonLd.data} />}
+
+  {
+    tracking && (
+      <TrackingScripts
+        googleAnalyticsId={tracking.googleAnalyticsId}
+        googleTagManagerId={tracking.googleTagManagerId}
+        bingUetId={tracking.bingUetId}
+        facebookPixelId={tracking.facebookPixelId}
+      />
+    )
+  }
+
+  {
+    social && (
+      <SocialMedia
+        facebookAppId={social.facebookAppId}
+        twitterSite={social.twitterSite}
+        twitterCreator={social.twitterCreator}
+        instagramUrl={social.instagramUrl}
+        linkedinUrl={social.linkedinUrl}
+        youtubeUrl={social.youtubeUrl}
+        githubUrl={social.githubUrl}
+        discordUrl={social.discordUrl}
+      />
+    )
+  }
+
+  <slot name="head" />
+</MetaTags>
+
+<body
+  class={`landing-page layout-${layout} theme-${theme} ${focusMode ? "focus-mode" : ""}`}
+>
+  {
+    showNavigation && (
+      <header class="header">
+        <nav class="nav">
+          <div class="nav-brand">
+            <a href="/" class="brand-link">
+              <span class="brand-text">Shaggy Satellite</span>
+            </a>
+          </div>
+          <div class="nav-links">
+            <a href="/" class="nav-link">
+              Home
+            </a>
+            <a href="/features" class="nav-link">
+              Features
+            </a>
+            <a href="/pricing" class="nav-link">
+              Pricing
+            </a>
+            <a href="/contact" class="nav-link">
+              Contact
+            </a>
+          </div>
+        </nav>
+      </header>
+    )
+  }
+
+  <main class="main">
+    <slot name="hero" />
+    <slot name="features" />
+    <slot name="demo" />
+    <slot name="testimonials" />
+    <slot name="cta" />
+    <slot name="content" />
+  </main>
+
+  {
+    showFooter && (
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="brand-text">Shaggy Satellite</span>
+            <p class="footer-description">
+              The ultimate React app for modern developers
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Product</h4>
+              <a href="/features">Features</a>
+              <a href="/pricing">Pricing</a>
+              <a href="/docs">Documentation</a>
+            </div>
+
+            <div class="footer-section">
+              <h4>Company</h4>
+              <a href="/about">About</a>
+              <a href="/contact">Contact</a>
+              <a href="/careers">Careers</a>
+            </div>
+
+            <div class="footer-section">
+              <h4>Resources</h4>
+              <a href="/blog">Blog</a>
+              <a href="/help">Help Center</a>
+              <a href="/status">Status</a>
+            </div>
+          </div>
+
+          <div class="footer-social">
+            {social && (
+              <SocialMedia
+                instagramUrl={social.instagramUrl}
+                linkedinUrl={social.linkedinUrl}
+                youtubeUrl={social.youtubeUrl}
+                githubUrl={social.githubUrl}
+                discordUrl={social.discordUrl}
+              />
+            )}
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 Shaggy Satellite. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
+    )
+  }
+</body>
+
+<style>
+  :root {
+    --color-primary: hsl(220, 100%, 50%);
+    --color-primary-dark: hsl(220, 100%, 40%);
+    --color-secondary: hsl(280, 100%, 60%);
+    --color-accent: hsl(40, 100%, 60%);
+    --color-text: hsl(0, 0%, 20%);
+    --color-text-light: hsl(0, 0%, 40%);
+    --color-bg: hsl(0, 0%, 100%);
+    --color-bg-light: hsl(0, 0%, 98%);
+    --color-bg-dark: hsl(0, 0%, 95%);
+    --color-border: hsl(0, 0%, 90%);
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .theme-dark {
+    --color-text: hsl(0, 0%, 90%);
+    --color-text-light: hsl(0, 0%, 70%);
+    --color-bg: hsl(0, 0%, 10%);
+    --color-bg-light: hsl(0, 0%, 15%);
+    --color-bg-dark: hsl(0, 0%, 5%);
+    --color-border: hsl(0, 0%, 25%);
+  }
+
+  .theme-gradient {
+    --color-bg: linear-gradient(
+      135deg,
+      hsl(220, 100%, 95%) 0%,
+      hsl(280, 100%, 95%) 100%
+    );
+  }
+
+  .focus-mode {
+    --focus-padding: var(--spacing-xl);
+    --focus-max-width: 800px;
+  }
+
+  .focus-mode .main {
+    padding-top: 0;
+  }
+
+  .focus-mode .hero-section {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .focus-mode .cta-section {
+    margin-top: var(--spacing-2xl);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    line-height: 1.6;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .brand-link {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+
+  .nav-link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer {
+    background: var(--color-bg-dark);
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-brand .brand-text {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-description {
+    color: var(--color-text-light);
+    max-width: 300px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .footer-section h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .footer-section a {
+    display: block;
+    color: var(--color-text-light);
+    text-decoration: none;
+    margin-bottom: var(--spacing-xs);
+    transition: color 0.2s ease;
+  }
+
+  .footer-section a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--color-text-light);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+
+  .footer-legal a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      padding: var(--spacing-sm);
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      text-align: center;
+    }
+  }
+</style>

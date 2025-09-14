@@ -1,0 +1,519 @@
+---
+import LandingPage from "../layouts/LandingPage.astro";
+import {
+  InteractiveDemo,
+  FeatureCard,
+  CounterWidget,
+} from "../components/react";
+
+const pageData = {
+  title: "Creative Design Tools for Modern Creators",
+  description:
+    "Unleash your creativity with our powerful React-based design platform. Professional tools, templates, and collaboration features for designers and content creators.",
+  keywords: [
+    "design tools",
+    "creative software",
+    "graphic design",
+    "ui design",
+    "collaboration",
+    "templates",
+  ],
+  canonical: "https://shaggy-satellite.com/creative-tools",
+  ogImage: "/og-creative.jpg",
+  jsonLd: {
+    type: "SoftwareApplication" as const,
+    data: {
+      name: "Shaggy Satellite Creative Tools",
+      description: "Professional design and creative collaboration platform",
+      applicationCategory: "DesignApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "19.99",
+        priceCurrency: "USD",
+      },
+    },
+  },
+  tracking: {
+    googleAnalyticsId: "GA-XXXXXX-X",
+    facebookPixelId: "FACEBOOK-XXXXXX",
+  },
+  social: {
+    twitterSite: "@shaggysatellite",
+    instagramUrl: "https://instagram.com/shaggysatellite",
+    youtubeUrl: "https://youtube.com/shaggysatellite",
+  },
+};
+---
+
+<LandingPage
+  {...pageData}
+  layout="minimal"
+  theme="dark"
+  focusMode={true}
+  showNavigation={false}
+  showFooter={false}
+>
+  <div slot="hero" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">🎨 Creative Platform</div>
+      <h1 class="hero-title">
+        Create Stunning Designs with
+        <span class="highlight">Professional Tools</span>
+      </h1>
+      <p class="hero-description">
+        The ultimate creative suite for designers, marketers, and content
+        creators. Powerful tools, beautiful templates, and seamless
+        collaboration in one platform.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary">Start Creating</a>
+        <a href="/templates" class="btn btn-secondary">Browse Templates</a>
+      </div>
+    </div>
+  </div>
+
+  <div slot="features" class="features-section">
+    <div class="container">
+      <h2 class="section-title">Everything You Need to Create</h2>
+      <div class="features-grid">
+        <FeatureCard
+          title="Advanced Editor"
+          description="Professional-grade editing tools with layers, filters, and effects."
+          icon="✏️"
+          isHighlighted={true}
+          client:visible
+        />
+        <FeatureCard
+          title="Template Library"
+          description="Thousands of professionally designed templates for every project."
+          icon="📋"
+          client:visible
+        />
+        <FeatureCard
+          title="Team Collaboration"
+          description="Real-time collaboration with comments, version control, and sharing."
+          icon="👥"
+          client:visible
+        />
+        <FeatureCard
+          title="Asset Management"
+          description="Organize and manage your creative assets with smart search and tags."
+          icon="📁"
+          client:visible
+        />
+        <FeatureCard
+          title="Export Options"
+          description="Export in multiple formats optimized for web, print, and social media."
+          icon="💾"
+          client:visible
+        />
+        <FeatureCard
+          title="Brand Kit"
+          description="Maintain brand consistency with custom color palettes and fonts."
+          icon="🎯"
+          client:visible
+        />
+      </div>
+    </div>
+  </div>
+
+  <div slot="demo" class="demo-section">
+    <div class="container">
+      <h2 class="section-title">Interactive Design Demo</h2>
+      <div class="demo-showcase">
+        <div class="demo-panel">
+          <InteractiveDemo
+            title="Design Controls"
+            description="Adjust the creative parameters to see real-time changes"
+            initialValue={45}
+            min={0}
+            max={100}
+            unit="%"
+            client:load
+          />
+        </div>
+        <div class="demo-stats">
+          <div class="stat-card">
+            <CounterWidget
+              title="Templates Available"
+              target={5000}
+              suffix="+"
+              description="Professional designs"
+              client:visible
+            />
+          </div>
+          <div class="stat-card">
+            <CounterWidget
+              title="Users Creating"
+              target={250000}
+              suffix="+"
+              description="Active creators"
+              client:visible
+            />
+          </div>
+          <div class="stat-card">
+            <CounterWidget
+              title="Projects Completed"
+              target={1000000}
+              suffix="+"
+              description="Designs created"
+              client:visible
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div slot="testimonials" class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">Loved by Creators Worldwide</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "This platform has completely transformed my design workflow. The
+              collaboration features are incredible!"
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍🎨</div>
+            <div class="author-info">
+              <h4>Sarah Chen</h4>
+              <span>UX Designer at TechCorp</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "The template library saves me hours every week. High-quality
+              designs that actually work."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍💼</div>
+            <div class="author-info">
+              <h4>Mike Rodriguez</h4>
+              <span>Marketing Manager</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "Finally, a design tool that doesn't compromise on features or
+              performance. Absolutely love it!"
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍💻</div>
+            <div class="author-info">
+              <h4>Emma Thompson</h4>
+              <span>Freelance Designer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div slot="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Create Something Amazing?</h2>
+        <p class="cta-description">
+          Join thousands of creators who are already using our platform to bring
+          their ideas to life.
+        </p>
+        <div class="cta-actions">
+          <a href="/signup" class="btn btn-primary btn-large"
+            >Start Free Trial</a
+          >
+          <a href="/pricing" class="btn btn-outline">View Plans</a>
+        </div>
+        <p class="cta-note">14-day free trial • No credit card required</p>
+      </div>
+    </div>
+  </div>
+</LandingPage>
+
+<style>
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 70vh;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: white;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .features-section {
+    background: var(--color-bg-light);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    color: var(--color-text);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .demo-section {
+    background: var(--color-bg);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .demo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
+  }
+
+  .demo-panel {
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+  }
+
+  .demo-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .stat-card {
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .testimonials-section {
+    background: var(--color-bg-light);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .testimonial-card {
+    background: var(--color-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .testimonial-content {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .testimonial-content p {
+    font-style: italic;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .author-avatar {
+    font-size: 2rem;
+  }
+
+  .author-info h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .author-info span {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .cta-section {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    color: white;
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-description {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-note {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+
+  .btn-outline:hover {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .demo-showcase {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

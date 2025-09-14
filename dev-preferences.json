@@ -1,0 +1,72 @@
+{
+  "styling": {
+    "colors": "hsl",
+    "respectGlobalStyles": true
+  },
+  "codeGeneration": {
+    "avoidPackages": ["tailwindcss"],
+    "preferredPackages": [
+      "postcss",
+      "autoprefixer",
+      "postcss-preset-env",
+      "stylelint",
+      "stylelint-order",
+      "stylelint-config-standard",
+      "zod"
+    ]
+  },
+  "documentation": {
+    "includeComments": false
+  },
+  "typescript": {
+    "preferTypes": true,
+    "preferFunctionDeclarations": true
+  },
+  "astro": {
+    "preferComponentProps": true,
+    "preferEventHandlers": true,
+    "componentGuidelines": "Use Astro components for blog layout, navigation, and static content. For interactive audio components in MDX, use React components with client:* directives. Keep Astro components focused on content structure and blog functionality.",
+    "clientDirectives": "Use 'client:load' for audio components that need immediate interactivity (above-the-fold demos), 'client:idle' for below-the-fold audio components, and 'client:visible' for audio components that only need to initialize when scrolled into view.",
+    "islandsArchitecture": "Embrace the islands architecture for your audio blog - keep blog content, navigation, and layout as static HTML. Audio components become interactive islands that load only when needed, improving initial page load and SEO while maintaining rich audio experiences.",
+    "mdxAudioComponents": "Audio components in MDX should be self-contained React components that handle their own Web Audio API initialization. Use client:* directives to control when they become interactive, balancing performance with user experience."
+  },
+  "ui": {
+    "iconLibrary": "lucide"
+  },
+  "programming": {
+    "paradigm": "functional",
+    "preferImmutability": true,
+    "preferPureFunctions": true,
+    "avoidSideEffects": true
+  },
+  "principles": {
+    "singleResponsibility": {
+      "enforceComponentSeparation": true,
+      "maxComponentLines": 200,
+      "maxFunctionLines": 50,
+      "preferPureFunctions": true
+    }
+  },
+  "structure": {
+    "colocateFiles": true,
+    "colocationDescription": "Whenever possible, place related files (component, styles, tests, hooks, types, audio, store, utils, etc.) in the same directory to improve discoverability and maintainability.",
+    "indexFileForComponents": true,
+    "indexFileDescription": "Each component directory should include an index.ts file that re-exports the default component (e.g., export { default } from './ComponentName';) to enable cleaner and more consistent imports."
+  },
+  "testing": {
+    "focusOnBehavior": true,
+    "avoidImplementationDetails": true,
+    "layeredTestingStrategy": {
+      "unitTests": {
+        "dspLayer": "Test oscillators, filters, envelopes, and mixer modules in isolation. Assert Web Audio API node connections, parameter values, and range enforcement. Use OfflineAudioContext where possible to render and inspect short audio buffers."
+      },
+      "integrationTests": {
+        "audioGraph": "Create small synth patches and verify that parameter changes propagate through the graph. Confirm oscillator frequencies, filter cutoffs, and envelope shapes match expected outputs."
+      },
+      "uiBehaviorTests": {
+        "userInteractions": "Use Testing Library to simulate clicks, knob drags, and key presses. For Astro components, test the rendered HTML output. For interactive components, test the client-side behavior as expected."
+      }
+    },
+    "testingGuidelines": "Follow a layered testing approach: For UI state, avoid directly testing component internals — rely on user-observable changes. For DSP state, testing 'internal details' is acceptable and required, because DSP internals are part of the app's public API to the UI. Test what the component does, not how it does it, except where DSP internals are the public API."
+  }
+}

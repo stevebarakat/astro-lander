@@ -1,16 +1,38 @@
----
+<div class="container">
+  <h1>Home Page</h1>
+  <h2>Site for displaying search engine optimized landing pages</h2>
 
----
+  <ul>
+    <li><a href="/example">Landing Page Example</a></li>
+  </ul>
+</div>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 10px;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+  }
+</style>

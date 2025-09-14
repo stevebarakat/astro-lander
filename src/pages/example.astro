@@ -1,0 +1,739 @@
+---
+import LandingPage from "../layouts/LandingPage.astro";
+import {
+  InteractiveDemo,
+  FeatureCard,
+  CounterWidget,
+} from "../components/react";
+
+const pageData = {
+  title: "Get Started Today - Free Trial Available",
+  description:
+    "Join thousands of users who have transformed their workflow. Start your free trial today with no credit card required.",
+  keywords: [
+    "free trial",
+    "get started",
+    "signup",
+    "no credit card",
+    "instant access",
+  ],
+  canonical: "https://shaggy-satellite.com/conversion-focused",
+  ogImage: "/og-conversion.jpg",
+  jsonLd: {
+    type: "SoftwareApplication" as const,
+    data: {
+      name: "Shaggy Satellite App",
+      description: "Transform your workflow with our powerful app",
+      applicationCategory: "ProductivityApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        priceValidUntil: "2024-12-31",
+      },
+    },
+  },
+  tracking: {
+    googleAnalyticsId: "GA-XXXXXX-X",
+    googleTagManagerId: "GTM-XXXXXXX",
+    facebookPixelId: "FACEBOOK-XXXXXX",
+  },
+  social: {
+    twitterSite: "@shaggysatellite",
+  },
+};
+---
+
+<LandingPage
+  {...pageData}
+  layout="hero"
+  theme="light"
+  focusMode={true}
+  showNavigation={false}
+  showFooter={false}
+>
+  <div slot="hero" class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Transform Your Workflow with
+        <span class="highlight">Smart Task Management</span>
+      </h1>
+      <p class="hero-description">
+        The ultimate productivity app built for developers who demand
+        efficiency. Manage tasks, track progress, and collaborate seamlessly
+        with your team.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary-one">Try Live Demo</a>
+        <a href="/pricing" class="btn btn-secondary-one">View Pricing</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <InteractiveDemo
+        title="Interactive React Component"
+        description="Drag the slider to see real-time progress tracking"
+        initialValue={75}
+        min={0}
+        max={100}
+        unit="%"
+        client:load
+      />
+    </div>
+  </div>
+
+  <div slot="features" class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Why 50,000+ Professionals Choose Us</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🚀</div>
+          <h3>Instant Setup</h3>
+          <p>
+            Get up and running in under 2 minutes. No complex configuration
+            required.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📈</div>
+          <h3>Proven Results</h3>
+          <p>
+            Average users see 40% productivity increase within the first week.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💡</div>
+          <h3>Smart Automation</h3>
+          <p>
+            AI-powered features that work in the background to save you time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div slot="demo" class="demo-section">
+    <div class="container">
+      <h2 class="section-title">See The Results For Yourself</h2>
+      <div class="results-showcase">
+        <div class="result-metric">
+          <div class="metric-number">2.5x</div>
+          <div class="metric-label">Faster Task Completion</div>
+        </div>
+        <div class="result-metric">
+          <div class="metric-number">60%</div>
+          <div class="metric-label">Less Time on Admin Tasks</div>
+        </div>
+        <div class="result-metric">
+          <div class="metric-number">85%</div>
+          <div class="metric-label">User Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div slot="testimonials" class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">What Our Users Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "This changed everything. I went from drowning in tasks to being
+              in complete control. The ROI was immediate."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Sarah M.</h4>
+              <span>Marketing Director</span>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "Setup was literally 2 minutes. Within an hour, I had automated
+              half my daily routine. Game changer."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Mike R.</h4>
+              <span>Freelance Consultant</span>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>
+              "Best productivity tool I've used in 10 years. The team loves it,
+              and our output has doubled."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-info">
+              <h4>Jennifer L.</h4>
+              <span>CEO, Tech Startup</span>
+              <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div slot="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Unlock Your Data Potential?</h2>
+        <p class="cta-description">
+          Start your free 14-day trial and see how our analytics platform can
+          transform your business.
+        </p>
+        <div class="cta-actions">
+          <a href="/signup" class="btn btn-primary btn-large"
+            >Start Free Trial</a
+          >
+          <a href="/demo" class="btn btn-secondary">Schedule Demo</a>
+        </div>
+        <p class="cta-note">No credit card required • Cancel anytime</p>
+      </div>
+    </div>
+  </div>
+</LandingPage>
+
+<style>
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .highlight {
+    color: var(--color-primary);
+    position: relative;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-bg-dark);
+  }
+
+  .social-proof {
+    margin: var(--spacing-xl) 0;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .cta-primary {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+  }
+
+  .btn-pulse {
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+
+  .cta-subtext {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .trust-indicators {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .trust-icon {
+    font-size: 1rem;
+  }
+
+  .benefits-section {
+    background: var(--color-bg-light);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    color: var(--color-text);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .benefit-card {
+    background: var(--color-bg);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    text-align: center;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .benefit-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .benefit-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .demo-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .results-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .result-metric {
+    padding: var(--spacing-xl);
+    background: var(--color-bg-light);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .metric-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .metric-label {
+    color: var(--color-text-light);
+    font-weight: 600;
+  }
+
+  .testimonials-section {
+    background: var(--color-bg-light);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .testimonial-card {
+    background: var(--color-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .testimonial-content {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .testimonial-content p {
+    font-style: italic;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+
+  .author-info h4 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+  }
+
+  .author-info span {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .rating {
+    margin-top: var(--spacing-xs);
+  }
+
+  .final-cta {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-description {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+  }
+
+  .cta-actions {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-guarantee {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .conversion-hero {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .proof-stats {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .trust-indicators {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .results-showcase {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .highlight {
+    color: var(--color-primary);
+    position: relative;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary-one {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary-one:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary-one {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary) !important;
+  }
+
+  .btn-secondary-one:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-large-one {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+  }
+
+  .btn-outline-one {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn-outline-one:hover {
+    background: var(--color-bg-dark);
+  }
+
+  .cta-section {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    color: white;
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-description {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cta-note {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+
+  .btn-secondary:hover {
+    background: white;
+    color: var(--color-primary);
+  }
+
+  .btn-large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

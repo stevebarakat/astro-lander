@@ -1,0 +1,64 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  keywords?: string[];
+  author?: string;
+  robots?: string;
+  canonical?: string;
+  themeColor?: string;
+  viewport?: string;
+  lang?: string;
+  additionalMeta?: Array<{
+    name?: string;
+    property?: string;
+    content: string;
+    httpEquiv?: string;
+  }>;
+}
+
+const {
+  title,
+  description,
+  keywords = [],
+  author,
+  robots = "index, follow",
+  canonical,
+  themeColor = "#000000",
+  viewport = "width=device-width, initial-scale=1.0",
+  lang = "en",
+  additionalMeta = [],
+} = Astro.props;
+
+const fullTitle = title.includes("Shaggy Satellite")
+  ? title
+  : `${title} | Shaggy Satellite`;
+const keywordsString = keywords.join(", ");
+---
+
+<html lang={lang}>
+  <head>
+    <title>{fullTitle}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content={viewport} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={themeColor} />
+
+    {keywordsString && <meta name="keywords" content={keywordsString} />}
+    {author && <meta name="author" content={author} />}
+    <meta name="robots" content={robots} />
+
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    {
+      additionalMeta.map((meta) => (
+        <meta
+          name={meta.name}
+          property={meta.property}
+          content={meta.content}
+          http-equiv={meta.httpEquiv}
+        />
+      ))
+    }
+  </head>
+</html>
