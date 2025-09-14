@@ -103,7 +103,6 @@ Project follows specific development guidelines defined in `dev-preferences.json
 - HSL color system for styling
 - Functional programming paradigm
 - Component colocation strategy
-- Comprehensive testing approach
 
 ## SEO Features
 
