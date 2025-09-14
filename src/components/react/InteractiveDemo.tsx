@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "./InteractiveDemo.module.css";
 
 type InteractiveDemoProps = {
   title: string;
@@ -49,15 +50,15 @@ function InteractiveDemo({
   };
 
   return (
-    <div className="interactive-demo">
-      <div className="demo-header">
-        <h3 className="demo-title">{title}</h3>
-        <p className="demo-description">{description}</p>
+    <div className={styles.interactiveDemo}>
+      <div className={styles.demoHeader}>
+        <h3 className={styles.demoTitle}>{title}</h3>
+        <p className={styles.demoDescription}>{description}</p>
       </div>
 
-      <div className="demo-controls">
-        <div className="slider-container">
-          <label htmlFor="demo-slider" className="slider-label">
+      <div className={styles.demoControls}>
+        <div className={styles.sliderContainer}>
+          <label htmlFor="demo-slider" className={styles.sliderLabel}>
             Value: {value.toFixed(1)}
             {unit}
           </label>
@@ -69,21 +70,23 @@ function InteractiveDemo({
             step={step}
             value={value}
             onChange={handleSliderChange}
-            className="demo-slider"
+            className={styles.demoSlider}
             disabled={isAnimating}
           />
         </div>
 
-        <div className="demo-buttons">
+        <div className={styles.demoButtons}>
           <button
             onClick={toggleAnimation}
-            className={`demo-button ${isAnimating ? "active" : ""}`}
+            className={`${styles.demoButton} ${
+              isAnimating ? styles.active : ""
+            }`}
           >
             {isAnimating ? "Stop Animation" : "Start Animation"}
           </button>
           <button
             onClick={resetValue}
-            className="demo-button secondary"
+            className={`${styles.demoButton} ${styles.secondary}`}
             disabled={isAnimating}
           >
             Reset
@@ -91,15 +94,15 @@ function InteractiveDemo({
         </div>
       </div>
 
-      <div className="demo-visualization">
+      <div className={styles.demoVisualization}>
         <div
-          className="demo-bar"
+          className={styles.demoBar}
           style={{
             height: "30px",
             width: `${((value - min) / (max - min)) * 100}%`,
             backgroundColor: `hsl(${
-              120 + ((value - min) / (max - min)) * 120
-            }, 70%, 50%)`,
+              55 + ((value - min) / (max - min)) * 220
+            }, 100%, 50%)`,
           }}
         />
       </div>
